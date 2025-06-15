@@ -143,7 +143,7 @@ def main():
         fallbacks=[CommandHandler("cancel", cancel)],
     )
 
-    app = ApplicationBuilder().token("YOUR_TOKEN").build()
+    app = ApplicationBuilder().token("8047716790:AAF3Orl4sM7lMe6IMxHbybYcsh4aSpRhIRA").build()
     app.add_handler(CommandHandler("start", start))
     app.run_polling()
 
