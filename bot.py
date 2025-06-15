@@ -121,7 +121,6 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # === Запуск бота ===
 def main():
-    app = ApplicationBuilder().token("8047716790:AAF3Orl4sM7lMe6IMxHbybYcsh4aSpRhIRA").build()
 
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler("start", start)],
@@ -144,8 +143,8 @@ def main():
         fallbacks=[CommandHandler("cancel", cancel)],
     )
 
-    app.add_handler(conv_handler)
-    print("Бот запущен...")
+    app = ApplicationBuilder().token("YOUR_TOKEN").build()
+    app.add_handler(CommandHandler("start", start))
     app.run_polling()
 
 if __name__ == "__main__":
