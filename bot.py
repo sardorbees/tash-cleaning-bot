@@ -11,7 +11,7 @@ CLEAN_TYPE, NAME, PHONE, ADDRESS, DATE_TIME, COMMENT, ASK_QUESTION = range(7)
 import os
 
 TOKEN = os.getenv("8047716790:AAF3Orl4sM7lMe6IMxHbybYcsh4aSpRhIRA")
-ADMIN_GROUP_ID = int(os.getenv("1756108441"))
+ADMIN_GROUP_ID = int(os.getenv("ADMIN_GROUP_ID"))
 
 # Приветственная анимация (если есть)
 ANIMATION_PATH = "animation.gif"
