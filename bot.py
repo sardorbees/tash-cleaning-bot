@@ -5,13 +5,8 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 # Шаги диалога
 CLEAN_TYPE, NAME, PHONE, ADDRESS, DATE_TIME, COMMENT, ASK_QUESTION = range(7)
 
-
-# ADMIN_GROUP_ID = 1756108441
-
-import os
-
-TOKEN = os.getenv("8047716790:AAF3Orl4sM7lMe6IMxHbybYcsh4aSpRhIRA")
-ADMIN_GROUP_ID = int(os.getenv("ADMIN_GROUP_ID"))
+# Замените этим ID вашей Telegram-группы
+ADMIN_GROUP_ID = 1756108441  # пример
 
 # Приветственная анимация (если есть)
 ANIMATION_PATH = "animation.gif"
@@ -121,6 +116,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # === Запуск бота ===
 def main():
+    app = ApplicationBuilder().token("8047716790:AAF3Orl4sM7lMe6IMxHbybYcsh4aSpRhIRA").build()
 
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler("start", start)],
@@ -143,10 +139,9 @@ def main():
         fallbacks=[CommandHandler("cancel", cancel)],
     )
 
-    app = ApplicationBuilder().token("8047716790:AAF3Orl4sM7lMe6IMxHbybYcsh4aSpRhIRA").build()
-    app.add_handler(CommandHandler("start", start))
+    app.add_handler(conv_handler)
+    print("Бот запущен...")
     app.run_polling()
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
+    main()
