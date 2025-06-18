@@ -18,6 +18,8 @@ ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID", "1756108441"))
 ASKING_QUESTION = 1
 VIDEO_PATH = "/home/sdhoijfidnhindhijtn/video2.mp4"
 
+
+
 user_questions = {}
 
 ANIMATION_PATH = "animation.gif"
@@ -317,9 +319,20 @@ async def house_type_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 HOUSE_TYPE = 10
 
+await app.bot.set_webhook('https://tash-cleaning-bot.onrender.com/webhook')
+
+# запуск обработки входящих запросов
+await app.run_webhook(
+    listen="0.0.0.0",
+    port=8000,
+    webhook_path="/webhook",
+    url_path="/webhook"
+)
+
 def main():
     logging.basicConfig(level=logging.INFO)
     app = ApplicationBuilder().token("8047716790:AAF3Orl4sM7lMe6IMxHbybYcsh4aSpRhIRA").build()
+    
 
     ask_conv = ConversationHandler(
         entry_points=[CommandHandler("ask", ask_question_start),
