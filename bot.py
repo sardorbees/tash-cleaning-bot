@@ -324,13 +324,6 @@ HOUSE_TYPE = 10
 def main():
     logging.basicConfig(level=logging.INFO)
     app = ApplicationBuilder().token("8047716790:AAF3Orl4sM7lMe6IMxHbybYcsh4aSpRhIRA").build()
-await app.bot.set_webhook("https://tash-cleaning-bot.onrender.com/webhook")
-
-    await app.run_webhook(
-        listen="0.0.0.0",
-        port=10000,
-        webhook_path="/webhook",
-    )
 
     ask_conv = ConversationHandler(
         entry_points=[CommandHandler("ask", ask_question_start),
