@@ -319,6 +319,8 @@ async def house_type_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 HOUSE_TYPE = 10
 
+await application.bot.delete_webhook(drop_pending_updates=True)
+await application.run_polling()
 
 
 def main():
